@@ -10,14 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> urlList;
     private ArrayAdapter<String> adapter;
     private EditText urlEditText;
+    private TextView welcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         urlEditText = findViewById(R.id.editTextText);
         Button addButton = findViewById(R.id.button);
+
+        User user = (User) getIntent().getExtras().getSerializable("USER");
+        ArrayList<String> userUrls = user.getUserUrls(this, user.getId());
+        for (String url: userUrls) {
+            urlList.add(url);
+        }
+
+
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

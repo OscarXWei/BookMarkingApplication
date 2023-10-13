@@ -13,7 +13,7 @@ public class ActivityWeb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
         String url = getIntent().getStringExtra("URL_KEY");
         //webView.loadUrl(url);
 
